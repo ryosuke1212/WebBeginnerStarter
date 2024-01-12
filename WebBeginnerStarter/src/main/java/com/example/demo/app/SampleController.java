@@ -16,7 +16,7 @@ public class SampleController {
 	
 	@GetMapping("/test")
 	public String test(Model model) {
-		model.addAttribute("title", "Inquiry Form")
+		model.addAttribute("title", "Inquiry Form");
 		//hands-on
 
 		return "test";
