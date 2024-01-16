@@ -8,9 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/sample")
 public class SampleController {
-	
 // 	private final JdbcTemplate jdbcTemplate;
-
 // 	//Add an annotation here 
 // 	public SampleController(JdbcTemplate jdbcTemplate) {
 // 		this.jdbcTemplate = jdbcTemplate;
@@ -19,8 +17,6 @@ public class SampleController {
 	@GetMapping("/test")
 	public String test(Model model) {
 		model.addAttribute("title", "Inquiry Form");
-		//hands-on
-
 		return "test";
 	}
 
