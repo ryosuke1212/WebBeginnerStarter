@@ -5,7 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
+//import java.security.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -22,7 +23,7 @@ public class InquiryDaoImpl implements InquiryDao {
 
     @Override
     public void insertInquiry(Inquiry inquiry) {
-        jdbcTemplate.update("INSERT INTO inquiry(name, email, contents, created VALUES(?, ?, ?, ?)",
+        jdbcTemplate.update("INSERT INTO inquiry(name, email, contents, created) VALUES(?, ?, ?, ?)",
                 inquiry.getName(), inquiry.getEmail(), inquiry.getContents(), inquiry.getCreated());
     }
 
@@ -32,12 +33,12 @@ public class InquiryDaoImpl implements InquiryDao {
         List<Map<String, Object>> resultList = jdbcTemplate.queryForList(sql);
         List<Inquiry> list = new ArrayList<Inquiry>();
         for(Map<String, Object> result : resultList) {
-            Inquiry inquiry= new Inquiry();
-            Inquiry.setId((int)result.get("id"));
-            Inquiry.setName((String)result.get("name"));
-            Inquiry.setEmail((String)result.get("email"));
-            Inquiry.setContents((String)result.get("contents"));
-            Inquiry.setCreated(((Timestamp)result.get("created")));
+            Inquiry inquiry = new Inquiry();
+            inquiry.setId((int)result.get("id"));
+            inquiry.setName((String)result.get("name"));
+            inquiry.setEmail((String)result.get("email"));
+            inquiry.setContents((String)result.get("contents"));
+            inquiry.setCreated(((Timestamp) result.get("created")).toLocalDateTime());
             list.add(inquiry);
         }
         return list;
