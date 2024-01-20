@@ -1,6 +1,5 @@
 package com.example.demo.entity;
 
-import java.security.Timestamp;
 import java.time.LocalDateTime;
 
 /*
@@ -28,31 +27,31 @@ public class Inquiry {
 	public int getId() {
 		return id;
 	}
-	public static void setId(int id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getName() {
 		return name;
 	}
-	public static void setName(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 	public String getEmail() {
 		return email;
 	}
-	public static void setEmail(String email) {
+	public void setEmail(String email) {
 		this.email = email;
 	}
 	public String getContents() {
 		return contents;
 	}
-	public static void setContents(String contents) {
+	public void setContents(String contents) {
 		this.contents = contents;
 	}
 	public LocalDateTime getCreated() {
 		return created;
 	}
-	public static void setCreated(Timestamp created) {
+	public void setCreated(LocalDateTime created) {
 		this.created = created;
 	}
 }
