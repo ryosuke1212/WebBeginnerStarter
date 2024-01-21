@@ -1,6 +1,7 @@
 package com.example.demo.app.inquiry;
 
 import com.example.demo.entity.Inquiry;
+import com.example.demo.service.InquiryNotFoundException;
 import com.example.demo.service.InquiryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +31,19 @@ public class InquiryController {
 	@GetMapping
 	public String index(Model model) {
 		List<Inquiry> list = inquiryService.getAll();
+
+		Inquiry inquiry = new Inquiry();
+		inquiry.setId(4);
+		inquiry.setName("Jamie");
+		inquiry.setEmail("sample4@example.com");
+		inquiry.setContents("Hello.");
+
+		try {
+			inquiryService.update(inquiry);
+		} catch (InquiryNotFoundException e) {
+			model.addAttribute("message", e);
+			return "error/CustomPage";
+		}
 
 		model.addAttribute("inquiryList", list);
 		model.addAttribute("title", "Inquiry Index");
